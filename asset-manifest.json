@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/resto_cafe/static/css/main.41329db1.css",
+    "main.js": "/resto_cafe/static/js/main.d25eb72e.js",
+    "index.html": "/resto_cafe/index.html",
+    "main.41329db1.css.map": "/resto_cafe/static/css/main.41329db1.css.map",
+    "main.d25eb72e.js.map": "/resto_cafe/static/js/main.d25eb72e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41329db1.css",
+    "static/js/main.d25eb72e.js"
+  ]
+}
