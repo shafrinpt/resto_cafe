@@ -55,7 +55,7 @@ const remove = (item)=>{
   return (
     <>
       <div className="container mt-2">
-        <h2 className='text-center'>Iteams Details Page
+        <h2 className='text-center'>Recipe Details Page
         </h2>
 
         <section className='container mt-3'>
@@ -75,9 +75,9 @@ const remove = (item)=>{
                         <td>
                           <p> <strong>Restaurant</strong>  : {ele.rname}</p>
                           <p> <strong>Price</strong>  : ₹{ele.dish_price}</p>
-                          <p> <strong>Dishes</strong>  : {ele.address}</p>
+                          <p> <strong>Name</strong>  : {ele.dish_name}</p>
                           <p> <strong>Total</strong>  :₹  {ele.dish_price * ele.qnty}</p>
-                          <div className='mt-5 d-flex justify-content-between align-items-center' style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>
+                          <div className='mt-5 d-flex justify-content-between align-items-center' style={{width:100,cursor:"pointer",background:"green",color:"#111"}}>
                           <span style={{fontSize:24}} onClick={ele.qnty <=1 ? ()=>dlt(ele.dish_id) : ()=>remove(ele)}>-</span>
                           <span style={{fontSize:22}}>{ele.qnty}</span>
                           <span style={{fontSize:24}} onClick={()=>send(ele)}>+</span>

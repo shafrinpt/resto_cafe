@@ -20,6 +20,7 @@ import Stack from '@mui/material/Stack';
 import CardActions from '@mui/material/CardActions';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { getDialogActionsUtilityClass } from '@mui/material';
 
 
 const shadow = '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)'
@@ -61,6 +62,9 @@ const Cards = () => {
 
   const [value, setValue] = React.useState(0);
   const [data] = useState(Cardsdata);
+  const getdata = useSelector((state)=> state.cartreducer.carts);
+  const [quantity, setQuantity] = useState(0);
+  console.log(getdata)
   //  console.log(data);
 
   const handleChange = (event, newValue) => {
@@ -127,28 +131,41 @@ const Cards = () => {
                               <Typography variant="h6" color="text.secondary">
                                 SAR {element.dish_price}
                               </Typography>
+                              <div>
                               <Typography variant="h6" color="text.secondary">
                                 {element.dish_calories} calories
                               </Typography>
+                              <Typography variant="h6" color="text.secondary">
+                                {element.dish_price} Price
+                              </Typography>
+                              </div>
                             </Stack>
                             <Typography variant="body2" color="text.secondary">
                               {element.dish_description}
                             </Typography>
                             <CardActions>
-                              <Stack direction="row" spacing={1} alignItems="center" style={{boxShadow: shadow, borderRadius: '50px', marginTop: '10px', marginBottom: '10px'}}>
-                                <IconButton aria-label="sub" onClick={()=> decrease(element)}>
+                              <Stack direction="row" spacing={1} alignItems="center"  style={{boxShadow: shadow, borderRadius: '50px', marginTop: '10px', marginBottom: '10px', backgroundColor: 'green'}}>
+                                <IconButton aria-label="sub" onClick={()=> {
+                                  
+                                  setQuantity((pv) => {
+                                   return pv - 1;
+                                });
+                                }}>
                                   <RemoveIcon />
                                 </IconButton>
                                 <Typography variant="h5" color="text.secondary">
-                                  0
+                                  {quantity}
                                 </Typography>
-                                <IconButton aria-label="add" onClick={()=> send(element)}>
+                                <IconButton aria-label="add" onClick={()=> {send(element); setQuantity((pv) => {
+                                  return pv + 1;
+                                })
+                                }}>
                                   <AddIcon />
                                 </IconButton>
                               </Stack>
                             </CardActions>
                             {element.addonCat.length > 0 && (
-                              <Typography variant="body2" color="text.secondary">
+                              <Typography variant="body2" color="red">
                                 Customizations available
                               </Typography>
                             )}
