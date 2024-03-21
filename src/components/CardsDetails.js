@@ -75,7 +75,7 @@ const remove = (item)=>{
                         <td>
                           <p> <strong>Restaurant</strong>  : {ele.rname}</p>
                           <p> <strong>Price</strong>  : ₹{ele.dish_price}</p>
-                          <p> <strong>Dishes</strong>  : {ele.address}</p>
+                          <p> <strong>Name</strong>  : {ele.dish_name}</p>
                           <p> <strong>Total</strong>  :₹  {ele.dish_price * ele.qnty}</p>
                           <div className='mt-5 d-flex justify-content-between align-items-center' style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>
                           <span style={{fontSize:24}} onClick={ele.qnty <=1 ? ()=>dlt(ele.dish_id) : ()=>remove(ele)}>-</span>
