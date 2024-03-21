@@ -4,8 +4,8 @@ import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton';
 import Cardsdata from './CardsData'
 import "./style.css";
-import { useDispatch } from 'react-redux';
-import { ADD } from '../redux/action/action';
+import { useDispatch ,useSelector} from 'react-redux';
+import { ADD,REMOVE } from '../redux/action/action';
 
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -23,7 +23,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 
 const shadow = '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)'
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,7 +60,7 @@ function a11yProps(index) {
 const Cards = () => {
 
   const [value, setValue] = React.useState(0);
-  const [data,] = useState(Cardsdata);
+  const [data] = useState(Cardsdata);
   //  console.log(data);
 
   const handleChange = (event, newValue) => {
@@ -74,9 +73,11 @@ const Cards = () => {
 
   const dispatch = useDispatch();
 
-  const send = (e)=>{
-    // console.log(e);
+  const send = (e)=>{  
     dispatch(ADD(e));
+  }
+  const decrease = (e)=>{  
+    dispatch(REMOVE(e));
   }
 
   return (
@@ -135,7 +136,7 @@ const Cards = () => {
                             </Typography>
                             <CardActions>
                               <Stack direction="row" spacing={1} alignItems="center" style={{boxShadow: shadow, borderRadius: '50px', marginTop: '10px', marginBottom: '10px'}}>
-                                <IconButton aria-label="sub">
+                                <IconButton aria-label="sub" onClick={()=> decrease(element)}>
                                   <RemoveIcon />
                                 </IconButton>
                                 <Typography variant="h5" color="text.secondary">

@@ -35,10 +35,11 @@ const Header = () => {
 
 
     useEffect(()=>{
+        // console.log(getdata,' getdata');
         const total = ()=>{
             let price = 0;
             getdata.map((ele,k)=>{
-                return price = ele.price * ele.qnty + price
+                return price = ele.dish_price * ele.qnty + price
             });
             setPrice(price);
         };
@@ -87,26 +88,26 @@ const Header = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {
+                                    {   
                                         getdata.map((e)=>{
                                             return (
-                                                <React.Fragment key={e.id}>
+                                                <React.Fragment key={e.dish_id}>
                                                     <tr>
                                                         <td>
-                                                        <NavLink to={`/cart/${e.id}`}   onClick={handleClose}>
-                                                        <img src={e.imgdata} style={{width:"5rem",height:"5rem"}} alt="" />
+                                                        <NavLink to={`/cart/${e.dish_id}`}   onClick={handleClose}>
+                                                        <img src={e.dish_image} style={{width:"5rem",height:"5rem"}} alt="" />
                                                         </NavLink>   
                                                         </td>
                                                         <td>
                                                             <p>{e.rname}</p>
-                                                            <p>Price : ₹{e.price}</p>
+                                                            <p>Price : ₹{e.dish_price}</p>
                                                             <p>Quantity : {e.qnty}</p>
-                                                            <p style={{color:"red",fontSize:20,cursor:"pointer"}} onClick={()=>dlt(e.id)}>
+                                                            <p style={{color:"red",fontSize:20,cursor:"pointer"}} onClick={()=>dlt(e.dish_id)}>
                                                                 <i className='fas fa-trash smalltrash'></i>
                                                             </p>
                                                         </td>
 
-                                                        <td className='mt-5'style={{color:"red",fontSize:20,cursor:"pointer"}}  onClick={()=>dlt(e.id)}>
+                                                        <td className='mt-5'style={{color:"red",fontSize:20,cursor:"pointer"}}  onClick={()=>dlt(e.dish_id)}>
                                                         <i className='fas fa-trash largetrash'></i>
                                                         </td>
                                                     </tr>
